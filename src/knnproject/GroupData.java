@@ -1,0 +1,158 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package knnproject;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author wahome
+ */
+public class GroupData {
+    
+    
+    
+     int[][] getDataToTest(int row ,int col) throws IOException{
+        int i,j;
+        String testData1;
+        String testData2;
+        System.out.println("Enter the test data");
+        System.out.println("Attribute Information: \n" +
+"A1: age \n" +
+"A2: sex \n" +
+"A3: chest pain type (4 values) \n" +
+"A4: resting blood pressure \n" +
+"A5: serum cholestoral in mg/dl \n" +
+"A6: fasting blood sugar > 120 mg/dl \n" +
+"A7: resting electrocardiographic results (values 0,1,2) \n" +
+"A8: maximum heart rate achieved \n" +
+"A9: exercise induced angina \n" +
+"A10: oldpeak = ST depression induced by exercise relative to rest \n" +
+"A11: the slope of the peak exercise ST segment \n" +
+"A12: number of major vessels (0-3) colored by flourosopy \n" +
+"A13: thal: 3 = normal; 6 = fixed defect; 7 = reversable defect ");
+        Scanner input=new Scanner(System.in);
+        int [][] dataTest=new int [row][col];
+            
+            for(i=0;i<row;i++){
+                 
+                for(j=0;j<col;j++){
+
+                 dataTest [i][j]= input.nextInt();
+                }
+              
+            }
+             
+            return  dataTest;
+    }
+     
+    int groupData(int [][] testdata){
+        
+        for(int i=0;i<69;i++){
+             for(int j=0;j<15;j++){
+//                 System.out.println("Values in the array are " +testdata[i][j]);
+             }
+         }
+        return 0;
+    }
+     int []copyArray(int [][]array){
+         int i,j;
+         int []sortedUserArray = new int[array.length];
+         for(i=0;i<array.length;i++){
+             
+             sortedUserArray[i]=array[i][14];
+         }
+       
+          return sortedUserArray;
+         }
+      int []sortArray(int [] sortArray){
+         int i,j;
+         int holdFirstNum;
+          for(i=0;i< sortArray.length-1;i++){
+           
+             
+             for(j=1;j<sortArray.length-i;j++) {
+                 if(sortArray[j-1]>sortArray[j]){
+                 
+                 holdFirstNum=sortArray[j-1];
+                 sortArray[j-1]=sortArray[j];
+                 sortArray[j]=holdFirstNum; 
+                 
+             }
+            } 
+             
+         }
+          return sortArray;
+     }
+       void votePro(int [][] usersArray,int [] sorArray,int clustersize){
+         int k;
+         
+         
+         int good = 0;
+         int bad = 0;
+         int i=0;
+         int l=0;
+         int h;
+
+   
+         for(k=l;k<usersArray.length;k++)
+         {
+            for(i=0;i<clustersize;i++){
+             if(usersArray[k][14]==sorArray[i])
+             {
+                 if(usersArray[k][13]==1)
+                 {
+                     good+=1;
+                     int nm=0;
+                     nm=i+1;
+                     i=nm;
+
+//                     l=0;
+                 }
+                 else 
+                 {
+                
+                     bad+=1;
+                     int mn=0;
+                     mn=i+1;
+                     i=mn;
+
+//                     l=0;
+                 }
+                 
+                 l=0;
+             }
+          
+             else
+             {  
+                  int trial;
+                  trial=i;
+                  i=trial;
+
+             }
+
+
+         }
+ 
+         }    
+//            System.out.println("The good "+good);
+//            System.out.println("The bad  "+bad);
+
+     
+      if(good>bad){
+             int result=1;
+             System.out.println("Lacks heart Problem");
+         }
+      else if (good<bad){
+           int rebad=2;
+              System.out.println("Heart Problem");
+         }
+        
+     }
+    
+    
+}
